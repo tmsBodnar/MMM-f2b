@@ -6,8 +6,8 @@ Module.register("MMM-f2b", {
         remoteFile: "f2b.txt",
         fadeSpeed: 2000
 	},
-    rawText = '',
-    parsed = '',
+    rawText : "",
+    parsed : "",
 
 	// Define required scripts.
 	getScripts: function () {
@@ -20,7 +20,7 @@ Module.register("MMM-f2b", {
     
         this.getRawText((response) => {
             this.rawText = response;
-            parseText();
+            this.parseText();
             this.updateDom();
         })
 
@@ -49,7 +49,7 @@ Module.register("MMM-f2b", {
 	},
 
     parseText: function () {
-        this.parsed = this.rawText.subString(this.rawText.indexOf("Total banned:"), this.rawText.lastIindexOf("`-"));
+        this.parsed = this.rawText.substring(this.rawText.indexOf("Total banned:"), this.rawText.lastIndexOf("`-"));
         this.parsed.trim();
         console.log(this.parsed);
     },
@@ -57,12 +57,12 @@ Module.register("MMM-f2b", {
 	// Override dom generator.
 	getDom: function () {
 		const wrapper = document.createElement("div");
-		wrapper.className = this.config.classes ? this.config.classes : "thin xlarge bright pre-line";t
+		wrapper.className = "dimmed light medium";
 		const text = document.createElement("span");
+		text.className = "bright";
         text.innerHTML = this.parsed;
 
         wrapper.appendChild(text);
-		wrapper.appendChild(compliment);
 
 		return wrapper;
 	},
