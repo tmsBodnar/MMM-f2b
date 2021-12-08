@@ -48,7 +48,7 @@ Module.register("MMM-f2b", {
 		xobj.send(null);
 	},
 
-    parseText() {
+    parseText: function () {
         this.parsed = this.rawText.subString(this.rawText.indexOf('Total banned:'), this.rawText.lastIindexOf('`-'));
         this.parsed.trim();
         console.log(this.parsed);
